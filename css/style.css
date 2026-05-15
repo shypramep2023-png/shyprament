@@ -144,14 +144,15 @@ background: linear-gradient(90deg, #0b8ec1, #20b8d1);
 }
 
 .brand-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 24px;
-margin-top: 34px;
-width: min(1180px, 92%);
-margin-left: auto;
-margin-right: auto;
-align-items: stretch;
+	display: grid;
+	/* Desktop: exactly 3 columns so first 3 cards are the top row and next 3 form the bottom row */
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 24px;
+	margin-top: 34px;
+	width: min(1180px, 92%);
+	margin-left: auto;
+	margin-right: auto;
+	align-items: stretch;
 }
 
 .brand-card {
