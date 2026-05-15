@@ -117,6 +117,120 @@ max-height: 100%;
 object-fit: contain;
 }
 
+/* ================= BRANDS ================= */
+.brands {
+background: linear-gradient(180deg, #eaf6fb 0%, #ffffff 100%);
+padding: 72px 0 80px;
+}
+
+.brands h2 {
+color: #16335f;
+font-size: 36px;
+margin: 0 0 28px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+position: relative;
+}
+
+.brands h2::after {
+content: "";
+display: block;
+width: 72px;
+height: 4px;
+margin: 10px auto 0;
+border-radius: 999px;
+background: linear-gradient(90deg, #0b8ec1, #20b8d1);
+}
+
+.brand-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 28px;
+margin-top: 34px;
+width: min(1120px, 92%);
+margin-left: auto;
+margin-right: auto;
+}
+
+.brand-card {
+background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+border-radius: 18px;
+padding: 22px 14px 20px;
+text-align: center;
+box-shadow: 0 8px 28px rgba(18,40,70,0.08);
+border: 1px solid rgba(11,142,193,0.06);
+position: relative;
+overflow: visible;
+transition: transform 0.32s ease, box-shadow 0.32s ease;
+}
+
+.brand-circle {
+ width: 260px;
+ height: 260px;
+ margin: -40px auto 10px;
+border-radius: 50%;
+background: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+ border: 6px solid #edf4fb;
+ box-shadow: inset 0 0 0 1px rgba(11, 142, 193, 0.06);
+}
+
+.brand-circle img {
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+ padding: 12px;
+ transition: transform 0.4s ease;
+}
+
+.brand-card h3 {
+color: #1f2c44;
+font-size: 24px;
+margin: 6px 0 0;
+font-weight: 700;
+letter-spacing: 0.3px;
+}
+
+.brand-subtitle {
+ color: #6b7280;
+ font-size: 13px;
+ margin: 6px 0 0;
+}
+
+.brand-card::before {
+ content: "";
+ position: absolute;
+ top: -22px;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 140%;
+ height: 60px;
+ background: radial-gradient(closest-side, rgba(11,142,193,0.06), transparent 70%);
+ border-radius: 50%;
+ pointer-events: none;
+}
+
+.brand-card:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 22px 40px rgba(18,40,70,0.12);
+}
+
+.brand-card:hover .brand-circle img {
+ transform: scale(1.06) rotate(-1.5deg);
+}
+
+@keyframes floatUp {
+ 0% { transform: translateY(0); }
+ 50% { transform: translateY(-6px); }
+ 100% { transform: translateY(0); }
+}
+
+.brand-card.reveal.active { animation: floatUp 2.8s ease-in-out infinite; }
+
 /* ================= FEATURE ================= */
 .feature-card{
 background:white;
@@ -209,6 +323,19 @@ color:#111;
 
 .hero-slider {
 height: 70vh;
+}
+
+.brand-grid {
+grid-template-columns: 1fr;
+}
+
+.brand-circle {
+width: 220px;
+height: 220px;
+}
+
+.brands {
+padding: 55px 0 60px;
 }
 
 .hero-overlay {
