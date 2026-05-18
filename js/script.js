@@ -55,3 +55,20 @@ document.querySelectorAll("#nav-menu a").forEach(link => {
         navMenu.classList.remove("active");
     });
 });
+
+// ===== Footer Quick Links: mark current page and show arrow =====
+document.addEventListener('DOMContentLoaded', function(){
+    const footerLinks = document.querySelectorAll('.footer-links a');
+    if(!footerLinks) return;
+    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    footerLinks.forEach(a => {
+        const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if(!href) return;
+        if(href === current || (href === 'index.html' && (current === '' || current === 'index.html'))){
+            a.classList.add('active');
+        }
+        // optional: add keyboard focus trigger so arrow appears on focus
+        a.addEventListener('focus', () => a.classList.add('active'));
+        a.addEventListener('blur', () => a.classList.remove('active'));
+    });
+});
