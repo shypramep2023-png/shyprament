@@ -72,3 +72,48 @@ document.addEventListener('DOMContentLoaded', function(){
         a.addEventListener('blur', () => a.classList.remove('active'));
     });
 });
+
+// ===== Footer interactions: newsletter & floating buttons =====
+(function(){
+    // newsletter form handling
+    const form = document.getElementById('newsletter-form');
+    const email = document.getElementById('newsletter-email');
+    if(form && email){
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            const val = (email.value || '').trim();
+            const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+            if(!ok){
+                email.style.outline = '2px solid #ffb4b4';
+                setTimeout(()=> email.style.outline = '', 1800);
+                return;
+            }
+            // TODO: wire to real endpoint. For now show a success tooltip
+            const note = document.querySelector('.newsletter-note');
+            if(note){ note.textContent = 'Thank you — subscribed!'; note.style.color = '#9fd7ff'; }
+            email.value = '';
+            setTimeout(()=>{ if(note) note.textContent = 'Subscribe to get updates on our latest products and offers.'; }, 5000);
+        });
+    }
+
+    // simple accessibility: add focus outline for floating actions
+    const actions = document.querySelectorAll('.action-btn');
+    actions.forEach(a => a.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') a.click(); }));
+    // move floating actions up when footer bottom is visible to avoid overlap
+    try{
+        const floating = document.querySelector('.floating-actions');
+        const footerBottom = document.querySelector('.footer-bottom');
+        if(floating && footerBottom && 'IntersectionObserver' in window){
+            const obs = new IntersectionObserver(entries =>{
+                entries.forEach(entry =>{
+                    if(entry.isIntersecting){
+                        floating.classList.add('floating-up');
+                    } else {
+                        floating.classList.remove('floating-up');
+                    }
+                });
+            }, { root: null, threshold: 0 });
+            obs.observe(footerBottom);
+        }
+    }catch(e){/* ignore */}
+})();
