@@ -15,19 +15,59 @@ function reveal() {
 window.addEventListener("scroll", reveal);
 
 
-// ===== Image Slider =====
-let slides = document.querySelectorAll(".slide");
-let index = 0;
+// ===== Image Slider (responsive + touch support) =====
+document.addEventListener('DOMContentLoaded', function(){
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    if(!slides || slides.length === 0) return;
 
-function showSlide() {
-    if (slides.length === 0) return;
+    let current = 0;
+    let slideInterval = null;
+    const AUTOPLAY_MS = 4000;
 
-    slides.forEach((slide) => slide.classList.remove("active"));
-    slides[index].classList.add("active");
+    function goTo(n){
+        slides.forEach(s => s.classList.remove('active'));
+        slides[n].classList.add('active');
+        current = n;
+    }
 
-    index = (index + 1) % slides.length;
-}
-setInterval(showSlide, 3000);
+    function next(){ goTo((current + 1) % slides.length); }
+    function prev(){ goTo((current - 1 + slides.length) % slides.length); }
+
+    function start(){ stop(); slideInterval = setInterval(next, AUTOPLAY_MS); }
+    function stop(){ if(slideInterval) clearInterval(slideInterval); slideInterval = null; }
+
+    // init
+    goTo(0);
+    start();
+
+    // pause on hover/focus
+    const hero = document.querySelector('.hero-slider');
+    if(hero){
+        hero.addEventListener('mouseenter', stop);
+        hero.addEventListener('mouseleave', start);
+        hero.addEventListener('focusin', stop);
+        hero.addEventListener('focusout', start);
+    }
+
+    // touch / swipe support
+    let startX = 0;
+    let isTouch = false;
+    hero && hero.addEventListener('touchstart', function(e){ isTouch = true; startX = e.touches[0].clientX; stop(); }, {passive:true});
+    hero && hero.addEventListener('touchmove', function(e){ if(!isTouch) return; }, {passive:true});
+    hero && hero.addEventListener('touchend', function(e){
+        if(!isTouch) return; isTouch = false;
+        const endX = (e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX) || startX;
+        const delta = endX - startX;
+        if(Math.abs(delta) > 40){ if(delta < 0) next(); else prev(); }
+        start();
+    });
+
+    // keyboard navigation
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowRight') { stop(); next(); start(); }
+        if(e.key === 'ArrowLeft') { stop(); prev(); start(); }
+    });
+});
 
 
 // ===== MOBILE MENU =====
