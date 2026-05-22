@@ -678,37 +678,37 @@ color:#374151;
 .newsletter-form button { padding:10px 12px; border-radius:8px; border:none; background:#f6c23a; color:#07101a; font-weight:700; cursor:pointer; }
 .newsletter-note { color:#9fb7c9; font-size:13px; margin-top:8px; }
 
+
 .brands-strip { margin:24px 0 12px; border-top:1px solid rgba(255,255,255,0.03); padding-top:18px; }
 .brands-inner {
-	display: flex;
-	gap: 12px;
-	align-items: center;
-	justify-content: center;
-	flex-wrap: nowrap; /* keep all logos on one line */
-	overflow-x: auto; /* allow horizontal scroll on small screens */
-	padding: 6px 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    gap: 12px;
+    align-items: center;
+    justify-items: center;
+    padding: 6px 8px;
 }
 
 .brands-inner img {
-	flex: 0 0 120px; /* fixed box width */
-	width: 120px;
-	height: 56px; /* match .footer-logo img height */
-	max-height: 56px;
-	background: #fff;
-	padding: 6px 10px;
-	border-radius: 8px;
-	object-fit: contain;
-	box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-	display: block;
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    max-height: 56px;
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    display: block;
 }
 
 @media (max-width: 900px) {
-	.brands-inner img { flex: 0 0 100px; width: 100px; height: 48px; max-height:48px; }
+	.brands-inner img { max-width: 100px; max-height:48px; width:100%; height:auto; }
 }
 
 @media (max-width: 520px) {
 	.brands-inner { gap: 8px; }
-	.brands-inner img { flex: 0 0 88px; width:88px; height:44px; max-height:44px; }
+	.brands-inner img { max-width: 88px; max-height:44px; width:100%; height:auto; }
 }
 
 .stats-row { display:flex; gap:18px; justify-content:center; align-items:center; padding:18px 0; border-top:1px solid rgba(255,255,255,0.03); }
