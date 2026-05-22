@@ -1309,7 +1309,8 @@ transform: scale(1.1);
 }
 
 @media (min-width: 1025px) {
-	.brands-logo-grid .brand-logo-box:last-child { grid-column: 3; }
+	.brands-logo-grid .brand-logo-box:nth-last-child(2) { grid-column: 1; }
+	.brands-logo-grid .brand-logo-box:last-child { grid-column: 2; }
 }
 
 .brand-logo-box {
