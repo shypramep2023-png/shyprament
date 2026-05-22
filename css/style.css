@@ -1258,10 +1258,6 @@ transform: scale(1.1);
 	position: relative;
 }
 .brands-hero::before{
-.content-hide {
-	display:none;
-}
-.brands-hero::before{
 	content: "";
 	position: absolute;
 	inset: 0;
@@ -1272,6 +1268,71 @@ transform: scale(1.1);
 }
 .brands-hero h2{ position: relative; z-index: 2; color: #071018; letter-spacing:1px; font-size:36px; }
 .brands-subtitle { position: relative; z-index:2; color: #16335f; max-width:980px; margin:8px auto 8px; text-align:center; font-size:16px; }
+
+.brands-logo-grid {
+	position: relative;
+	z-index: 2;
+	width: min(1120px, 96%);
+	margin: 12px auto 20px;
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 16px;
+}
+
+@media (min-width: 1025px) {
+	.brands-logo-grid .brand-logo-box:last-child { grid-column: 3; }
+}
+
+.brand-logo-box {
+	background: #ffffff;
+	border: 1px solid rgba(11, 142, 193, 0.12);
+	border-radius: 14px;
+	height: 108px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px;
+	box-shadow: 0 10px 24px rgba(12, 35, 67, 0.08);
+	animation: brandFloat 4s ease-in-out infinite;
+	transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.brand-logo-box:nth-child(2n) { animation-delay: .3s; }
+.brand-logo-box:nth-child(3n) { animation-delay: .6s; }
+
+.brand-logo-box:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 16px 28px rgba(12, 35, 67, 0.14);
+}
+
+.brand-logo-box img {
+	max-width: 100%;
+	max-height: 74px;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	display: block;
+}
+
+@keyframes brandFloat {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-4px); }
+	100% { transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+	.brands-logo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+	.brands-logo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.brand-logo-box { height: 96px; }
+	.brand-logo-box img { max-height: 62px; }
+}
+
+@media (max-width: 520px) {
+	.brands-logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 /* decor underline to match site accent */
 .brands-hero h2::after{
