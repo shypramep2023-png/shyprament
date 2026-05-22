@@ -681,19 +681,19 @@ color:#374151;
 
 .brands-strip { margin:24px 0 12px; border-top:1px solid rgba(255,255,255,0.03); padding-top:18px; }
 .brands-inner {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-    gap: 12px;
-    align-items: center;
-    justify-items: center;
-    padding: 6px 8px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 8px;
 }
 
 .brands-inner img {
-    width: 100%;
-    max-width: 120px;
-    height: auto;
-    max-height: 56px;
+	flex: 0 0 120px;
+	width: 120px;
+	height: 56px;
+	max-height: 56px;
     background: #fff;
     padding: 6px 10px;
     border-radius: 8px;
@@ -703,12 +703,12 @@ color:#374151;
 }
 
 @media (max-width: 900px) {
-	.brands-inner img { max-width: 100px; max-height:48px; width:100%; height:auto; }
+	.brands-inner img { flex: 0 0 100px; width:100px; height:48px; max-height:48px; }
 }
 
 @media (max-width: 520px) {
 	.brands-inner { gap: 8px; }
-	.brands-inner img { max-width: 88px; max-height:44px; width:100%; height:auto; }
+	.brands-inner img { flex: 0 0 88px; width:88px; height:44px; max-height:44px; }
 }
 
 .stats-row { display:flex; gap:18px; justify-content:center; align-items:center; padding:18px 0; border-top:1px solid rgba(255,255,255,0.03); }
@@ -727,7 +727,7 @@ color:#374151;
 .action-btn.whatsapp-btn { background: linear-gradient(135deg,#28d67a,#049c3a); }
 
 @media (max-width: 900px) {
-	.brands-inner { justify-content:flex-start; }
+	.brands-inner { justify-content:center; }
 	.stats-row { flex-direction:column; gap:8px; }
 }
 
