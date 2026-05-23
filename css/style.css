@@ -856,10 +856,21 @@ color:#111;
 }
 
 /* ================= MOBILE ================= */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
 .hero-slider {
-height: 70vh;
+height: clamp(220px, 56vw, 420px);
+min-height: 220px;
+max-height: 420px;
+}
+
+.slides {
+background: #000;
+}
+
+.slide {
+object-fit: contain;
+object-position: center;
 }
 
 .brand-grid {
