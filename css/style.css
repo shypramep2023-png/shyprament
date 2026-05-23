@@ -954,22 +954,28 @@ text-align: center;
 max-height: 0;
 overflow: hidden;
 transition: max-height 0.4s ease;
+z-index: 1100;
 }
 
 nav a {
 padding: 15px;
 display: block;
 border-top: 1px solid rgba(255,255,255,0.1);
+box-sizing: border-box;
 }
 
 nav a.quote-btn{
-margin: 12px 15px 16px;
+margin: 12px auto 16px;
 display: flex;
 border-top: 0;
+width: calc(100% - 30px);
+max-width: 320px;
 }
 
 nav.active {
-max-height: 300px;
+max-height: calc(100dvh - 70px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
 }
 
 }
