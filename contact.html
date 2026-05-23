@@ -54,7 +54,80 @@
 
 <div class="contact-layout">
 
-<form class="contact-form" action="mailto:bhavesh@shyprament.com" method="post" enctype="text/plain">
+	
+<!-- new form -->
+<form class="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST">
+
+<!-- Replace with your Web3Forms Access Key -->
+<input type="hidden"
+       name="access_key"
+       value="aa52240f-1f85-45cb-8d6c-f78dbf648263">
+
+<!-- Redirect after submit -->
+<input type="hidden"
+       name="redirect"
+       value="https://shyprament.com">
+
+<h2>Quick Inquiry</h2>
+
+<p class="form-note">
+Tell us what you need and we’ll get back with the right product guidance.
+</p>
+
+<div class="form-grid">
+
+<label>
+<span>Your Name</span>
+<input type="text"
+       name="name"
+       placeholder="Enter your name"
+       required>
+</label>
+
+<label>
+<span>Email Address</span>
+<input type="email"
+       name="email"
+       placeholder="Enter your email"
+       required>
+</label>
+
+<label>
+<span>Phone Number</span>
+<input type="tel"
+       name="phone"
+       placeholder="Enter your phone number">
+</label>
+
+<label>
+<span>Subject</span>
+<input type="text"
+       name="subject"
+       placeholder="What can we help with?"
+       required>
+</label>
+
+</div>
+
+<label class="full-width">
+<span>Your Message</span>
+
+<textarea name="message"
+          rows="6"
+          placeholder="Share product names, quantities, or project details"
+          required></textarea>
+</label>
+
+<button type="submit" class="submit-btn">
+Send Message
+</button>
+
+</form>
+	
+<!-- old Form--> 
+<!-- <form class="contact-form" action="mailto:bhavesh@shyprament.com" method="post" enctype="text/plain">
 <h2>Quick Inquiry</h2>
 <p class="form-note">Tell us what you need and we’ll get back with the right product guidance.</p>
 
@@ -86,7 +159,7 @@
 </label>
 
 <button type="submit" class="submit-btn">Send Message</button>
-</form>
+</form> -->
 
 <div class="contact-grid">
 
